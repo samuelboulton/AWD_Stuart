@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Get IP</title>
+</head>
+<body>
+    <p id="para">
+    <button type="button" onclick="getRest()">Click to get Restaurants</button>
+    </p>
+
+    <label for="insertRes">Insert Restaurant</label>
+    <input type="text" id="insertRes" name="restaurantName" placeholder="Restaurant Name..">
+
+    <label for="resWebsite">Insert Website</label>
+    <input type="text" id="resWebsite" name="restaurant_website" placeholder="Restaurant Website..">
+
+    <label for="resReview">Insert Review</label>
+    <input type="text" id="resReview" name="restaurant_review" placeholder="Restaurant Review..">
+
+    <input type="submit" value="Insert">
+</body>
+<script>
+
+
+    function getRest(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                var output = this.responseText;
+                document.getElementById("para").innerHTML = output;
+                console.log("Success");
+            }else{
+                console.log("Error: " + this.status)
+            }
+        }
+        
+        xhttp.open("GET", "http://cs2s.yorkdc.net:5008/dbgetRest", true);
+        xhttp.send();
+
+    }
+
+    function insertBtn(){
+
+    }
+</script>
+</html>
